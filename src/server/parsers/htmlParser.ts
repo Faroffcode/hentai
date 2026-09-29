@@ -50,7 +50,7 @@ async function parseJsonBody(req: IncomingMessage): Promise<any> {
 }
 
 // Send JSON response
-function sendJson(res: ServerResponse, statusCode: number, data: any) {
+export function sendJson(res: ServerResponse, statusCode: number, data: any) {
   res.statusCode = statusCode;
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -60,7 +60,7 @@ function sendJson(res: ServerResponse, statusCode: number, data: any) {
 }
 
 // Helper to resolve relative URLs to absolute
-function resolveUrl(relativeOrAbsolute: string, baseUrl: string): string {
+export function resolveUrl(relativeOrAbsolute: string, baseUrl: string): string {
   try {
     return new URL(relativeOrAbsolute, baseUrl).href;
   } catch {
@@ -68,7 +68,7 @@ function resolveUrl(relativeOrAbsolute: string, baseUrl: string): string {
   }
 }
 
-function cleanTitle(rawTitle: string): string {
+export function cleanTitle(rawTitle: string): string {
   return rawTitle
     .replace(/\s*[-–—|]\s*(?:Watch\s+Hentai|Watch\s+Online|Stream\s+Online|Free\s+Hentai|English\s+Subbed).*$/i, '')
     .replace(/\s*[-–—|]\s*(?:Watch\s+Free|HD\s+Free|Watch\s+Full).*$/i, '')
@@ -76,7 +76,7 @@ function cleanTitle(rawTitle: string): string {
 }
 
 // Extract posts from catalog / series listing / archive pages
-function extractCatalogPosts(html: string, pageUrl: string): Array<{
+export function extractCatalogPosts(html: string, pageUrl: string): Array<{
   id: string;
   title: string;
   thumbnail: string;
@@ -521,11 +521,11 @@ export function extractFromHtml(html: string, pageUrl: string): ScrapeResult {
   return result;
 }
 
-function stripHtml(html: string): string {
+export function stripHtml(html: string): string {
   return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
-function decodeHtmlEntities(str: string): string {
+export function decodeHtmlEntities(str: string): string {
   return str
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')

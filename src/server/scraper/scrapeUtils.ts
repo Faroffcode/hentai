@@ -1,4 +1,4 @@
-interface ScrapeResult {
+export interface ScrapeResult {
   title: string;
   thumbnail: string;
   description: string;

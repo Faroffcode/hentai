@@ -1,3 +1,5 @@
+let lastTelegramCallTimestamp = 0;
+
 async function enforceTelegramRateLimit(minDelayMs: number = 1500) {
   const now = Date.now();
   const timeSinceLast = now - lastTelegramCallTimestamp;

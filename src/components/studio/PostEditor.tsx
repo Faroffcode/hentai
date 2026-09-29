@@ -99,55 +99,19 @@ export const PostEditor: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="bg-[#131B2A] border border-slate-800/90 rounded-2xl p-5 shadow-xl space-y-4">
       
-      {/* 1. Post Content Card (Thumbnail, Title, Description) */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2 text-sm font-semibold text-slate-200">
-            <Type className="w-4 h-4 text-sky-400" />
-            <span>Post Metadata & Thumbnail</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            {saveLibFeedback && (
-              <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 animate-in fade-in">
-                {saveLibFeedback}
-              </span>
-            )}
-
-            {/* Save to library button */}
-            {post.title && (
-              <button
-                type="button"
-                onClick={handleSaveToLibrary}
-                disabled={isSavingLib}
-                className="flex items-center gap-1 text-[11px] font-medium text-sky-300 bg-sky-950/50 hover:bg-sky-900/60 border border-sky-500/30 px-2.5 py-1 rounded-lg transition cursor-pointer"
-                title="Save current post into data/hnt1, hnt2..."
-              >
-                <Save className="w-3 h-3 text-sky-400" />
-                <span>{isSavingLib ? 'Saving...' : 'Save to Library'}</span>
-              </button>
-            )}
-
-            {/* Browse Library Modal */}
-            <button
-              type="button"
-              onClick={() => setDataLibraryModalOpen(true)}
-              className="flex items-center gap-1 text-[11px] font-medium text-slate-400 hover:text-slate-200 bg-slate-950 hover:bg-slate-800 border border-slate-800 px-2.5 py-1 rounded-lg transition cursor-pointer"
-              title="Open Data Library Explorer"
-            >
-              <Folder className="w-3 h-3 text-amber-400" />
-              <span>Library</span>
-            </button>
-
-            {post.siteName && (
-              <span className="text-[11px] font-mono text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700">
-                Source: {post.siteName}
-              </span>
-            )}
-          </div>
-        </div>
+      {/* Header */}
+      <div className="flex items-center justify-between pb-1 border-b border-slate-800/80">
+        <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2">
+          <span>Post Editor</span>
+        </h3>
+        {saveLibFeedback && (
+          <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 animate-in fade-in">
+            {saveLibFeedback}
+          </span>
+        )}
+      </div>
 
         {/* Thumbnail Preview & URL */}
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 items-start">
@@ -269,10 +233,8 @@ export const PostEditor: React.FC = () => {
           onClearAll={() => setPost({ galleryImages: [] })}
         />
 
-      </div>
-
       {/* 2. Episode Links Manager Card */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+      <div className="pt-2 space-y-4">
         
         {/* Episodes Header & Action Bar */}
         <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-800">

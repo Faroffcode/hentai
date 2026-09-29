@@ -1,3 +1,4 @@
+import type { ScrapeResult } from './scrapeUtils';
 import { resolveUrl, cleanTitle, extractCatalogPosts, stripHtml, decodeHtmlEntities } from './scrapeUtils';
 
 export function extractFromHtml(html: string, pageUrl: string): ScrapeResult {

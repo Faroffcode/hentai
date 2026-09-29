@@ -13,7 +13,14 @@ import {
   generateMainIndexJson
 } from './storageManager';
 import { crawlerService } from './crawlerService';
-import { extractFromHtml } from './parsers/htmlParser';
+import {
+  parseJsonBody,
+  sendJson,
+  extractFromHtml,
+  fetchPageHtml,
+  callTelegramApi,
+  sendTelegramDocument,
+} from './parsers/htmlParser';
 
 export async function handleApiRequest(req: IncomingMessage, res: ServerResponse): Promise<boolean> {
   const url = req.url || '';
